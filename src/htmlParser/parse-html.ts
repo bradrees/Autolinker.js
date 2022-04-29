@@ -234,7 +234,7 @@ export function parseHtml(
                 name: captureTagName(),
             });
             emitTagAndPreviousTextNode(); // resets to Data state as well
-        } else if (!letterRe.test(char) && !digitRe.test(char) && char !== ':') {
+        } else if (!letterRe.test(char) && !digitRe.test(char) && char !== ':' && char !== '-') {
             // Anything else that does not form an html tag. Note: the colon
             // character is accepted for XML namespaced tags
             resetToDataState();

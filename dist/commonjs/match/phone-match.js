@@ -14,7 +14,7 @@ var match_1 = require("./match");
  * details.
  */
 var PhoneMatch = /** @class */ (function (_super) {
-    tslib_1.__extends(PhoneMatch, _super);
+    (0, tslib_1.__extends)(PhoneMatch, _super);
     /**
      * @method constructor
      * @param {Object} cfg The configuration properties for the Match
@@ -95,4 +95,5 @@ var PhoneMatch = /** @class */ (function (_super) {
     return PhoneMatch;
 }(match_1.Match));
 exports.PhoneMatch = PhoneMatch;
+
 //# sourceMappingURL=phone-match.js.map

@@ -7,8 +7,8 @@ var regex_lib_1 = require("../regex-lib");
 var hashtag_match_1 = require("../match/hashtag-match");
 // RegExp objects which are shared by all instances of HashtagMatcher. These are
 // here to avoid re-instantiating the RegExp objects if `Autolinker.link()` is
-// called multiple times, thus instantiating HashtagMatcher and its RegExp
-// objects each time (which is very expensive - see https://github.com/gregjacobs/Autolinker.js/issues/314).
+// called multiple times, thus instantiating HashtagMatcher and its RegExp 
+// objects each time (which is very expensive - see https://github.com/gregjacobs/Autolinker.js/issues/314). 
 // See descriptions of the properties where they are used for details about them
 var matcherRegex = new RegExp("#[_".concat(regex_lib_1.alphaNumericAndMarksCharsStr, "]{1,139}(?![_").concat(regex_lib_1.alphaNumericAndMarksCharsStr, "])"), 'g'); // lookahead used to make sure we don't match something above 139 characters
 var nonWordCharRegex = new RegExp('[^' + regex_lib_1.alphaNumericAndMarksCharsStr + ']');
@@ -19,7 +19,7 @@ var nonWordCharRegex = new RegExp('[^' + regex_lib_1.alphaNumericAndMarksCharsSt
  * Matcher to find HashtagMatch matches in an input string.
  */
 var HashtagMatcher = /** @class */ (function (_super) {
-    tslib_1.__extends(HashtagMatcher, _super);
+    (0, tslib_1.__extends)(HashtagMatcher, _super);
     /**
      * @method constructor
      * @param {Object} cfg The configuration properties for the Match instance,
@@ -73,7 +73,7 @@ var HashtagMatcher = /** @class */ (function (_super) {
                     matchedText: matchedText,
                     offset: offset,
                     serviceName: serviceName,
-                    hashtag: hashtag,
+                    hashtag: hashtag
                 }));
             }
         }
@@ -82,4 +82,5 @@ var HashtagMatcher = /** @class */ (function (_super) {
     return HashtagMatcher;
 }(matcher_1.Matcher));
 exports.HashtagMatcher = HashtagMatcher;
+
 //# sourceMappingURL=hashtag-matcher.js.map

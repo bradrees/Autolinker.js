@@ -1,17 +1,17 @@
-import { AnchorTagBuilder } from './anchor-tag-builder';
-import { Match } from './match/match';
-import { EmailMatch } from './match/email-match';
-import { HashtagMatch } from './match/hashtag-match';
-import { MentionMatch } from './match/mention-match';
-import { PhoneMatch } from './match/phone-match';
-import { UrlMatch } from './match/url-match';
-import { Matcher } from './matcher/matcher';
-import { HtmlTag } from './html-tag';
-import { EmailMatcher } from './matcher/email-matcher';
-import { UrlMatcher } from './matcher/url-matcher';
-import { HashtagMatcher } from './matcher/hashtag-matcher';
-import { PhoneMatcher } from './matcher/phone-matcher';
-import { MentionMatcher } from './matcher/mention-matcher';
+import { AnchorTagBuilder } from "./anchor-tag-builder";
+import { Match } from "./match/match";
+import { EmailMatch } from "./match/email-match";
+import { HashtagMatch } from "./match/hashtag-match";
+import { MentionMatch } from "./match/mention-match";
+import { PhoneMatch } from "./match/phone-match";
+import { UrlMatch } from "./match/url-match";
+import { Matcher } from "./matcher/matcher";
+import { HtmlTag } from "./html-tag";
+import { EmailMatcher } from "./matcher/email-matcher";
+import { UrlMatcher } from "./matcher/url-matcher";
+import { HashtagMatcher } from "./matcher/hashtag-matcher";
+import { PhoneMatcher } from "./matcher/phone-matcher";
+import { MentionMatcher } from "./matcher/mention-matcher";
 /**
  * @class Autolinker
  * @extends Object
@@ -125,7 +125,7 @@ export default class Autolinker {
      *
      * The Autolinker version number in the form major.minor.patch
      *
-     * Ex: 3.15.0
+     * Ex: 0.25.1
      */
     static readonly version = "3.15.0";
     /**
@@ -689,7 +689,7 @@ export interface StripPrefixConfigObj {
 export declare type TruncateConfig = number | TruncateConfigObj;
 export interface TruncateConfigObj {
     length?: number;
-    location?: 'end' | 'middle' | 'smart';
+    location?: "end" | "middle" | "smart";
 }
 export declare type HashtagConfig = false | HashtagServices;
 export declare type HashtagServices = 'twitter' | 'facebook' | 'instagram' | 'tiktok';

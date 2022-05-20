@@ -70,8 +70,8 @@ function parseHtml(html, _a) {
         var char = html.charAt(charIdx);
         // For debugging: search for other "For debugging" lines
         // ALSO: Temporarily remove the 'const' keyword on the State enum
-        // table.push(
-        // 	[ charIdx, char, State[ state ], currentDataIdx, currentTag.idx, currentTag.idx === -1 ? '' : currentTag.type ]
+        // table.push( 
+        // 	[ charIdx, char, State[ state ], currentDataIdx, currentTag.idx, currentTag.idx === -1 ? '' : currentTag.type ] 
         // );
         switch (state) {
             case 0 /* Data */:
@@ -142,8 +142,8 @@ function parseHtml(html, _a) {
         }
         // For debugging: search for other "For debugging" lines
         // ALSO: Temporarily remove the 'const' keyword on the State enum
-        // table.push(
-        // 	[ charIdx, char, State[ state ], currentDataIdx, currentTag.idx, currentTag.idx === -1 ? '' : currentTag.type ]
+        // table.push( 
+        // 	[ charIdx, char, State[ state ], currentDataIdx, currentTag.idx, currentTag.idx === -1 ? '' : currentTag.type ] 
         // );
         charIdx++;
     }
@@ -167,7 +167,7 @@ function parseHtml(html, _a) {
         }
         else if (char === '/') {
             state = 2 /* EndTagOpen */;
-            currentTag = new CurrentTag(tslib_1.__assign(tslib_1.__assign({}, currentTag), { isClosing: true }));
+            currentTag = new CurrentTag((0, tslib_1.__assign)((0, tslib_1.__assign)({}, currentTag), { isClosing: true }));
         }
         else if (char === '<') {
             // start of another tag (ignore the previous, incomplete one)
@@ -176,20 +176,20 @@ function parseHtml(html, _a) {
         else if (regex_lib_1.letterRe.test(char)) {
             // tag name start (and no '/' read)
             state = 3 /* TagName */;
-            currentTag = new CurrentTag(tslib_1.__assign(tslib_1.__assign({}, currentTag), { isOpening: true }));
+            currentTag = new CurrentTag((0, tslib_1.__assign)((0, tslib_1.__assign)({}, currentTag), { isOpening: true }));
         }
         else {
-            // Any other
+            // Any other 
             state = 0 /* Data */;
             currentTag = noCurrentTag;
         }
     }
-    // After a '<x', '</x' sequence is read (where 'x' is a letter character),
+    // After a '<x', '</x' sequence is read (where 'x' is a letter character), 
     // this is to continue reading the tag name
     // https://www.w3.org/TR/html51/syntax.html#tag-name-state
     function stateTagName(char) {
         if (regex_lib_1.whitespaceRe.test(char)) {
-            currentTag = new CurrentTag(tslib_1.__assign(tslib_1.__assign({}, currentTag), { name: captureTagName() }));
+            currentTag = new CurrentTag((0, tslib_1.__assign)((0, tslib_1.__assign)({}, currentTag), { name: captureTagName() }));
             state = 4 /* BeforeAttributeName */;
         }
         else if (char === '<') {
@@ -197,15 +197,15 @@ function parseHtml(html, _a) {
             startNewTag();
         }
         else if (char === '/') {
-            currentTag = new CurrentTag(tslib_1.__assign(tslib_1.__assign({}, currentTag), { name: captureTagName() }));
+            currentTag = new CurrentTag((0, tslib_1.__assign)((0, tslib_1.__assign)({}, currentTag), { name: captureTagName() }));
             state = 12 /* SelfClosingStartTag */;
         }
         else if (char === '>') {
-            currentTag = new CurrentTag(tslib_1.__assign(tslib_1.__assign({}, currentTag), { name: captureTagName() }));
+            currentTag = new CurrentTag((0, tslib_1.__assign)((0, tslib_1.__assign)({}, currentTag), { name: captureTagName() }));
             emitTagAndPreviousTextNode(); // resets to Data state as well
         }
-        else if (!regex_lib_1.letterRe.test(char) && !regex_lib_1.digitRe.test(char) && char !== ':' && char !== '-') {
-            // Anything else that does not form an html tag. Note: the colon
+        else if (!regex_lib_1.letterRe.test(char) && !regex_lib_1.digitRe.test(char) && char !== ':') {
+            // Anything else that does not form an html tag. Note: the colon 
             // character is accepted for XML namespaced tags
             resetToDataState();
         }
@@ -216,8 +216,7 @@ function parseHtml(html, _a) {
     // Called after the '/' is read from a '</' sequence
     // https://www.w3.org/TR/html51/syntax.html#end-tag-open-state
     function stateEndTagOpen(char) {
-        if (char === '>') {
-            // parse error. Encountered "</>". Skip it without treating as a tag
+        if (char === '>') { // parse error. Encountered "</>". Skip it without treating as a tag
             resetToDataState();
         }
         else if (regex_lib_1.letterRe.test(char)) {
@@ -323,7 +322,7 @@ function parseHtml(html, _a) {
             state = 9 /* AttributeValueSingleQuoted */;
         }
         else if (/[>=`]/.test(char)) {
-            // Invalid chars after an '=' for an attribute value, don't count
+            // Invalid chars after an '=' for an attribute value, don't count 
             // the current tag as an HTML tag
             resetToDataState();
         }
@@ -338,8 +337,7 @@ function parseHtml(html, _a) {
     }
     // https://www.w3.org/TR/html51/syntax.html#attribute-value-double-quoted-state
     function stateAttributeValueDoubleQuoted(char) {
-        if (char === "\"") {
-            // end the current double-quoted attribute
+        if (char === "\"") { // end the current double-quoted attribute
             state = 11 /* AfterAttributeValueQuoted */;
         }
         else {
@@ -348,8 +346,7 @@ function parseHtml(html, _a) {
     }
     // https://www.w3.org/TR/html51/syntax.html#attribute-value-single-quoted-state
     function stateAttributeValueSingleQuoted(char) {
-        if (char === "'") {
-            // end the current single-quoted attribute
+        if (char === "'") { // end the current single-quoted attribute
             state = 11 /* AfterAttributeValueQuoted */;
         }
         else {
@@ -395,12 +392,12 @@ function parseHtml(html, _a) {
             reconsumeCurrentCharacter();
         }
     }
-    // A '/' has just been read in the current tag (presumably for '/>'), and
+    // A '/' has just been read in the current tag (presumably for '/>'), and 
     // this handles the next character
     // https://www.w3.org/TR/html51/syntax.html#self-closing-start-tag-state
     function stateSelfClosingStartTag(char) {
         if (char === '>') {
-            currentTag = new CurrentTag(tslib_1.__assign(tslib_1.__assign({}, currentTag), { isClosing: true }));
+            currentTag = new CurrentTag((0, tslib_1.__assign)((0, tslib_1.__assign)({}, currentTag), { isClosing: true }));
             emitTagAndPreviousTextNode(); // resets to Data state as well
         }
         else {
@@ -410,20 +407,19 @@ function parseHtml(html, _a) {
     // https://www.w3.org/TR/html51/syntax.html#markup-declaration-open-state
     // (HTML Comments or !DOCTYPE)
     function stateMarkupDeclarationOpen(char) {
-        if (html.substr(charIdx, 2) === '--') {
-            // html comment
+        if (html.substr(charIdx, 2) === '--') { // html comment
             charIdx += 2; // "consume" characters
-            currentTag = new CurrentTag(tslib_1.__assign(tslib_1.__assign({}, currentTag), { type: 'comment' }));
+            currentTag = new CurrentTag((0, tslib_1.__assign)((0, tslib_1.__assign)({}, currentTag), { type: 'comment' }));
             state = 14 /* CommentStart */;
         }
         else if (html.substr(charIdx, 7).toUpperCase() === 'DOCTYPE') {
             charIdx += 7; // "consume" characters
-            currentTag = new CurrentTag(tslib_1.__assign(tslib_1.__assign({}, currentTag), { type: 'doctype' }));
+            currentTag = new CurrentTag((0, tslib_1.__assign)((0, tslib_1.__assign)({}, currentTag), { type: 'doctype' }));
             state = 20 /* Doctype */;
         }
         else {
             // At this point, the spec specifies that the state machine should
-            // enter the "bogus comment" state, in which case any character(s)
+            // enter the "bogus comment" state, in which case any character(s) 
             // after the '<!' that were read should become an HTML comment up
             // until the first '>' that is read (or EOF). Instead, we'll assume
             // that a user just typed '<!' as part of text data
@@ -439,7 +435,7 @@ function parseHtml(html, _a) {
         }
         else if (char === '>') {
             // At this point, we'll assume the comment wasn't a real comment
-            // so we'll just emit it as data. We basically read the sequence
+            // so we'll just emit it as data. We basically read the sequence 
             // '<!-->'
             resetToDataState();
         }
@@ -457,7 +453,7 @@ function parseHtml(html, _a) {
         }
         else if (char === '>') {
             // At this point, we'll assume the comment wasn't a real comment
-            // so we'll just emit it as data. We basically read the sequence
+            // so we'll just emit it as data. We basically read the sequence 
             // '<!--->'
             resetToDataState();
         }
@@ -488,7 +484,7 @@ function parseHtml(html, _a) {
             state = 16 /* Comment */;
         }
     }
-    // After we've read two dashes inside a comment, it may signal the end of
+    // After we've read two dashes inside a comment, it may signal the end of 
     // the comment if we then read a '>' char
     // https://www.w3.org/TR/html51/syntax.html#comment-end-state
     function stateCommentEnd(char) {
@@ -520,7 +516,7 @@ function parseHtml(html, _a) {
             emitTagAndPreviousTextNode();
         }
         else {
-            // The '--!' was not followed by a '>', continue reading the
+            // The '--!' was not followed by a '>', continue reading the 
             // comment's text
             state = 16 /* Comment */;
         }
@@ -576,8 +572,8 @@ function parseHtml(html, _a) {
     function emitTagAndPreviousTextNode() {
         var textBeforeTag = html.slice(currentDataIdx, currentTag.idx);
         if (textBeforeTag) {
-            // the html tag was the first element in the html string, or two
-            // tags next to each other, in which case we should not emit a text
+            // the html tag was the first element in the html string, or two 
+            // tags next to each other, in which case we should not emit a text 
             // node
             onText(textBeforeTag, currentDataIdx);
         }
@@ -591,8 +587,7 @@ function parseHtml(html, _a) {
             if (currentTag.isOpening) {
                 onOpenTag(currentTag.name, currentTag.idx);
             }
-            if (currentTag.isClosing) {
-                // note: self-closing tags will emit both opening and closing
+            if (currentTag.isClosing) { // note: self-closing tags will emit both opening and closing
                 onCloseTag(currentTag.name, currentTag.idx);
             }
         }
@@ -634,4 +629,5 @@ var CurrentTag = /** @class */ (function () {
     }
     return CurrentTag;
 }());
+
 //# sourceMappingURL=parse-html.js.map

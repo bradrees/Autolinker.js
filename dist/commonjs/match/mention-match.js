@@ -12,7 +12,7 @@ var match_1 = require("./match");
  * See this class's superclass ({@link Autolinker.match.Match}) for more details.
  */
 var MentionMatch = /** @class */ (function (_super) {
-    tslib_1.__extends(MentionMatch, _super);
+    (0, tslib_1.__extends)(MentionMatch, _super);
     /**
      * @method constructor
      * @param {Object} cfg The configuration properties for the Match
@@ -78,8 +78,7 @@ var MentionMatch = /** @class */ (function (_super) {
                 return 'https://soundcloud.com/' + this.mention;
             case 'tiktok':
                 return 'https://www.tiktok.com/@' + this.mention;
-            default:
-                // Shouldn't happen because Autolinker's constructor should block any invalid values, but just in case.
+            default: // Shouldn't happen because Autolinker's constructor should block any invalid values, but just in case.
                 throw new Error('Unknown service name to point mention to: ' + this.serviceName);
         }
     };
@@ -108,4 +107,5 @@ var MentionMatch = /** @class */ (function (_super) {
     return MentionMatch;
 }(match_1.Match));
 exports.MentionMatch = MentionMatch;
+
 //# sourceMappingURL=mention-match.js.map

@@ -46,7 +46,6 @@ var Match = /** @class */ (function () {
          * Reference to the AnchorTagBuilder instance to use to generate an anchor
          * tag for the Match.
          */
-        // @ts-ignore
         this.__jsduckDummyDocProp = null; // property used just to get the above doc comment into the ES5 output and documentation generator
         /**
          * @cfg {String} matchedText (required)
@@ -155,4 +154,5 @@ var Match = /** @class */ (function () {
     return Match;
 }());
 exports.Match = Match;
+
 //# sourceMappingURL=match.js.map

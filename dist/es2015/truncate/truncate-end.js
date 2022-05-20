@@ -1,4 +1,4 @@
-import { ellipsis } from '../utils';
+import { ellipsis } from "../utils";
 /**
  * A truncation feature where the ellipsis will be placed at the end of the URL.
  *
@@ -10,4 +10,5 @@ import { ellipsis } from '../utils';
 export function truncateEnd(anchorText, truncateLen, ellipsisChars) {
     return ellipsis(anchorText, truncateLen, ellipsisChars);
 }
+
 //# sourceMappingURL=truncate-end.js.map

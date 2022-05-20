@@ -27,7 +27,7 @@ var phoneMatcherRegex = new RegExp("".concat(mostPhoneNumbers.source, "|").conca
  * details.
  */
 var PhoneMatcher = /** @class */ (function (_super) {
-    tslib_1.__extends(PhoneMatcher, _super);
+    (0, tslib_1.__extends)(PhoneMatcher, _super);
     function PhoneMatcher() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         /**
@@ -67,7 +67,7 @@ var PhoneMatcher = /** @class */ (function (_super) {
                     matchedText: matchedText,
                     offset: match.index,
                     number: cleanNumber,
-                    plusSign: plusSign,
+                    plusSign: plusSign
                 }));
             }
         }
@@ -79,4 +79,5 @@ var PhoneMatcher = /** @class */ (function (_super) {
     return PhoneMatcher;
 }(matcher_1.Matcher));
 exports.PhoneMatcher = PhoneMatcher;
+
 //# sourceMappingURL=phone-matcher.js.map

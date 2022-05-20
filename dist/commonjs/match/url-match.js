@@ -12,7 +12,7 @@ var match_1 = require("./match");
  * See this class's superclass ({@link Autolinker.match.Match}) for more details.
  */
 var UrlMatch = /** @class */ (function (_super) {
-    tslib_1.__extends(UrlMatch, _super);
+    (0, tslib_1.__extends)(UrlMatch, _super);
     /**
      * @method constructor
      * @param {Object} cfg The configuration properties for the Match
@@ -55,10 +55,7 @@ var UrlMatch = /** @class */ (function (_super) {
          *
          * The Object form of {@link Autolinker#cfg-stripPrefix}.
          */
-        _this.stripPrefix = {
-            scheme: true,
-            www: true,
-        }; // default value just to get the above doc comment in the ES5 output and documentation generator
+        _this.stripPrefix = { scheme: true, www: true }; // default value just to get the above doc comment in the ES5 output and documentation generator
         /**
          * @cfg {Boolean} stripTrailingSlash (required)
          * @inheritdoc Autolinker#cfg-stripTrailingSlash
@@ -255,12 +252,12 @@ var UrlMatch = /** @class */ (function (_super) {
             // Now attempt to decode the rest of the anchor text
             return decodeURIComponent(preProcessedEntityAnchorText);
         }
-        catch (e) {
-            // Invalid % escape sequence in the anchor text
+        catch (e) { // Invalid % escape sequence in the anchor text
             return preProcessedEntityAnchorText;
         }
     };
     return UrlMatch;
 }(match_1.Match));
 exports.UrlMatch = UrlMatch;
+
 //# sourceMappingURL=url-match.js.map

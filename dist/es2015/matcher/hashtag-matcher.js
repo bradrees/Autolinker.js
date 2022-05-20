@@ -1,11 +1,11 @@
 import { __extends } from "tslib";
-import { Matcher } from "./matcher";
-import { alphaNumericAndMarksCharsStr } from "../regex-lib";
-import { HashtagMatch } from "../match/hashtag-match";
+import { Matcher } from './matcher';
+import { alphaNumericAndMarksCharsStr } from '../regex-lib';
+import { HashtagMatch } from '../match/hashtag-match';
 // RegExp objects which are shared by all instances of HashtagMatcher. These are
 // here to avoid re-instantiating the RegExp objects if `Autolinker.link()` is
-// called multiple times, thus instantiating HashtagMatcher and its RegExp 
-// objects each time (which is very expensive - see https://github.com/gregjacobs/Autolinker.js/issues/314). 
+// called multiple times, thus instantiating HashtagMatcher and its RegExp
+// objects each time (which is very expensive - see https://github.com/gregjacobs/Autolinker.js/issues/314).
 // See descriptions of the properties where they are used for details about them
 var matcherRegex = new RegExp("#[_".concat(alphaNumericAndMarksCharsStr, "]{1,139}(?![_").concat(alphaNumericAndMarksCharsStr, "])"), 'g'); // lookahead used to make sure we don't match something above 139 characters
 var nonWordCharRegex = new RegExp('[^' + alphaNumericAndMarksCharsStr + ']');
@@ -70,7 +70,7 @@ var HashtagMatcher = /** @class */ (function (_super) {
                     matchedText: matchedText,
                     offset: offset,
                     serviceName: serviceName,
-                    hashtag: hashtag
+                    hashtag: hashtag,
                 }));
             }
         }
@@ -79,5 +79,4 @@ var HashtagMatcher = /** @class */ (function (_super) {
     return HashtagMatcher;
 }(Matcher));
 export { HashtagMatcher };
-
 //# sourceMappingURL=hashtag-matcher.js.map

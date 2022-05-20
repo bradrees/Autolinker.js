@@ -1,6 +1,6 @@
-import { Matcher, MatcherConfig } from "./matcher";
-import { HashtagServices } from "../autolinker";
-import { Match } from "../match/match";
+import { Matcher, MatcherConfig } from './matcher';
+import { HashtagServices } from '../autolinker';
+import { Match } from '../match/match';
 /**
  * @class Autolinker.matcher.Hashtag
  * @extends Autolinker.matcher.Matcher
